@@ -1,3 +1,4 @@
+import { CoursesService } from './courses.service';
 import { Component } from '@angular/core';
 import { template } from '@angular/core/src/render3';
 
@@ -12,7 +13,13 @@ import { template } from '@angular/core/src/render3';
         </ul>
         `
 })
-export class CoursesComponent{
-    title = "List of courses";
-    courses = ["courses1","courses2","courses3"];
+export class CoursesComponent {
+    title = 'List of courses';
+    courses;
+
+    constructor(service: CoursesService) { // dependency == loosely coupled
+        // let service = new CoursesService();
+        this.courses = service.getCourses();
+    }
+    //logic for calling http service
 }
